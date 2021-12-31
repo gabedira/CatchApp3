@@ -2,9 +2,6 @@ package com.example.catchapp3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -12,11 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.catchapp3.adapters.RunListAdapter;
-import com.example.catchapp3.dbTables.Runs;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
-public class MainActivity extends AppCompatActivity implements RunListAdapter.OnNoteListener{
+public class ListActivity extends AppCompatActivity implements RunListAdapter.OnNoteListener{
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements RunListAdapter.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_list);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final RunListAdapter adapter = new RunListAdapter(new RunListAdapter.RunDiff(), this);
