@@ -3,6 +3,7 @@ package com.example.catchapp3;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +42,16 @@ public class MainActivity extends AppCompatActivity implements RunListAdapter.On
             // Update the cached copy of the words in the adapter.
             adapter.submitList(words);
         });
+
+//        TextView tv2 = (TextView) findViewById(R.id.tv2);
+//
+//
+//        mCatchAppViewModel.getAllRunVals(1).observe(this, words -> {
+//            // Update the cached copy of the words in the adapter.
+//            tv2.setText(Double.toString(words.get(0).updateTime));
+//        });
+
+
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(view -> {

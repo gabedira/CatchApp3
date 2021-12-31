@@ -27,7 +27,7 @@ public class CatchAppViewModel extends AndroidViewModel {
     }
 
     LiveData<List<Runs>> getAllRuns() { return mAllRuns; }
-    LiveData<List<RunVals>> getAllRunVals(int id) { return mAllRunVals; }
+    LiveData<List<RunVals>> getAllRunVals(int id) { return mRepository.getAllRunVals(id); }
 
     public void insert(User user) { mRepository.insert(user); }
     public void insert(Runs run) { mRepository.insert(run); }

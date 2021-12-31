@@ -29,4 +29,11 @@ public class RunVals {
         this.updateTime = updateTime;
         this.updateSpeed = updateSpeed;
     }
+
+    public RunVals(RunVals rv){
+        this.runId = rv.runId;
+        this.updateSpeed = rv.updateSpeed;
+        this.updateTime = rv.updateSpeed;
+    }
+
 }

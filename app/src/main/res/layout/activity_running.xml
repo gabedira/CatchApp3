@@ -5,6 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RunningActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
 
     <TextView
         android:id="@+id/textView2"
@@ -13,4 +17,14 @@
         android:text="Inside Running Activity"
         tools:layout_editor_absoluteX="176dp"
         tools:layout_editor_absoluteY="382dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Inside Running Activity"
+            tools:layout_editor_absoluteX="176dp"
+            tools:layout_editor_absoluteY="382dp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
