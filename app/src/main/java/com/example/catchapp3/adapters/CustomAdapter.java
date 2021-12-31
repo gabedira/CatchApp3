@@ -21,6 +21,7 @@ import java.util.List;
 class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     private final TextView runItemView;
     static RunListAdapter.OnNoteListener onNoteListener;
+    private Runs run;
 
     public RunViewHolder(View itemView, RunListAdapter.OnNoteListener onNoteListener) {
         super(itemView);
@@ -30,8 +31,9 @@ class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListe
         itemView.setOnClickListener(this);
     }
 
-    public void bind(String text) {
-        runItemView.setText(text);
+    public void bind(Runs run) {
+        this.run = run;
+        runItemView.setText(run.runName);
     }
 
     public RunViewHolder create(ViewGroup parent) {
@@ -42,7 +44,7 @@ class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        onNoteListener.onNoteClick(getAdapterPosition());
+        onNoteListener.onNoteClick(run.runId);
     }
 }
 

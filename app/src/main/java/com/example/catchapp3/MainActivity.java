@@ -64,8 +64,10 @@ public class MainActivity extends AppCompatActivity implements RunListAdapter.On
     }
 
     @Override
-    public void onNoteClick(int Position) {
+    public void onNoteClick(int id) {
         Intent intent = new Intent(this, RunningActivity.class); // TODO: update this to new activity
+        intent.putExtra("id", id);
+
         startActivity(intent);
     }
 }

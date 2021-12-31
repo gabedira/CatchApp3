@@ -26,12 +26,12 @@ public class RunListAdapter extends ListAdapter<Runs, RunViewHolder> {
     @Override
     public void onBindViewHolder(RunViewHolder holder, int position) {
         Runs current = getItem(position);
-        holder.bind(current.runName);
+        holder.bind(current);
     }
 
 
     public interface OnNoteListener{
-        void onNoteClick(int Position);
+        void onNoteClick(int id);
     }
 
 
