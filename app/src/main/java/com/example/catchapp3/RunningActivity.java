@@ -40,19 +40,19 @@ public class RunningActivity extends AppCompatActivity {
             //The key argument here must match that used in the other activity
         }
 
-        TextView textView = (TextView) findViewById(R.id.textView2);
-        textView.setText(Integer.toString(id)); //set text for text view
-        TextView textView2 = (TextView) findViewById(R.id.textView3);
+//        TextView textView = (TextView) findViewById(R.id.);
+//        textView.setText(Integer.toString(id)); //set text for text view
+//        TextView textView2 = (TextView) findViewById(R.id.textView3);
 
         mCatchAppViewModel.getAllRunVals(id).observe(this, rvList -> {
             // Update the cached copy of the words in the adapter.
             playGame(rvList);
 
             if(rvList != null) {
-                textView2.setText(Double.toString(rvList.get(0).updateSpeed)); //set text for text view
+//                textView2.setText(Double.toString(rvList.get(0).updateSpeed)); //set text for text view
             }
-            else
-                textView2.setText("List is null");
+            //else
+//                textView2.setText("List is null");
         });
     }
 
