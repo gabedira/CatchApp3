@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RunningActivity">
+    tools:context=".RunningActivity"
+    android:background="@android:color/white"
+    >
 
 
     <ImageView
@@ -12,40 +14,51 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/running_track" />
+        app:srcCompat="@drawable/runningfieldlong" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true">
 
         <include
             android:id="@+id/userDisp"
             layout="@layout/running_mini_display"
-            android:layout_width="1.5in"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:padding="10dp">
 
         <TextView
             android:id="@+id/timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:text="Timer"
             android:textSize="32dp"
-            android:layout_gravity="center_horizontal"/>
+            android:padding="10dp"/>
 
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Button"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:text="Start"
+            android:background="#FF00FF00"/>
+
+        </LinearLayout>
 
         <include
             android:id="@+id/ghostDisp"
             layout="@layout/running_mini_display"
-            android:layout_width="1.5in"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
