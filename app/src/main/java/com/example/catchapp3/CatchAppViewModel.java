@@ -32,4 +32,8 @@ public class CatchAppViewModel extends AndroidViewModel {
     public void insert(User user) { mRepository.insert(user); }
     public void insert(Runs run) { mRepository.insert(run); }
     public void insert(RunVals runVals) { mRepository.insert(runVals); }
+    public void deleteAllRuns(){mRepository.deleteAllRuns();}
+    public void deleteAllRunVals(){mRepository.deleteAllRunVals(); }
+    public LiveData<Integer> getID(){return mRepository.getID();}
+    public void updateLenAndTime(double totLen, double totTime){mRepository.updateLenAndTime(totLen, totTime);}
 }

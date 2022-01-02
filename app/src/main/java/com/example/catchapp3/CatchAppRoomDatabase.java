@@ -54,17 +54,18 @@ public abstract class CatchAppRoomDatabase extends RoomDatabase {
                 dao.deleteAllRunVals();
                 dao.deleteAllRuns();
                 dao.deleteAllUsers();
-                Log.v("testing", "populating the database");
                 User user1 = new User(1, "Jeff");
-                Runs run1 = new Runs(1, "testRun", "12/29/2021", 1, 6.8, 3000);
+                //Runs run1 = new Runs(1, "testRun", "12/29/2021", 1, 6.8, 3000);
 
-                RunVals rv1 = new RunVals(1, 0.3, 5.4);
-                RunVals rv2 = new RunVals(1, 0.5, 5.7);
+                RunVals rv1 = new RunVals(1, 1, 5.4);
+                RunVals rv2 = new RunVals(1, 10, 10);
+                RunVals rv3 = new RunVals(1, 20, 1);
 
                 dao.insert(user1);
-                dao.insert(run1);
+                //dao.insert(run1);
                 dao.insert(rv1);
                 dao.insert(rv2);
+                dao.insert(rv3);
             });
         }
     };

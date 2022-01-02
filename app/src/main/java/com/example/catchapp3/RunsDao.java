@@ -40,4 +40,10 @@ public interface RunsDao {
 
     @Query("SELECT * FROM run_vals WHERE run_id = :id ORDER BY update_time ASC")
     LiveData<List<RunVals>> getRunVals(int id);
+
+    @Query("SELECT run_id FROM runs ORDER BY run_id DESC LIMIT 1")
+    LiveData<Integer> getID();
+
+    @Query("UPDATE runs SET total_length = :totLen, total_time = :totTime WHERE run_id = (SELECT run_id FROM runs ORDER BY run_id DESC)")
+    void updateLenAndTime(double totLen, double totTime);
 }

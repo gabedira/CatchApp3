@@ -17,6 +17,7 @@
         app:srcCompat="@drawable/runningfieldlong" />
 
     <LinearLayout
+        android:id="@+id/linlayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
@@ -45,7 +46,7 @@
             android:textSize="32dp"
             android:padding="10dp"/>
 
-        <Button
+            <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -63,6 +64,15 @@
             android:layout_weight="1" />
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/finish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linlayout"
+        android:layout_centerHorizontal="true"
+        android:text="FINISH"
+        android:visibility="invisible" />
 
 
 </RelativeLayout>

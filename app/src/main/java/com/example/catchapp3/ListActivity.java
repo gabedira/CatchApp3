@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.catchapp3.adapters.RunListAdapter;
+import com.example.catchapp3.dbTables.RunVals;
+import com.example.catchapp3.dbTables.Runs;
 
 
 public class ListActivity extends AppCompatActivity implements RunListAdapter.OnNoteListener{
@@ -29,6 +31,22 @@ public class ListActivity extends AppCompatActivity implements RunListAdapter.On
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         mCatchAppViewModel = new ViewModelProvider(this).get(CatchAppViewModel.class);
+//        mCatchAppViewModel.deleteAllRunVals();
+//        mCatchAppViewModel.deleteAllRuns();
+
+        //Runs run2 = new Runs("testRun3", "12/29/2021", 1, 6.8, 3000);
+//
+//        RunVals rv1 = new RunVals(1, 1, 5.4);
+//        RunVals rv2 = new RunVals(1, 10, 10);
+//        RunVals rv3 = new RunVals(1, 20, 1);
+//
+       // mCatchAppViewModel.insert(run2);
+//        mCatchAppViewModel.insert(rv1);
+//        mCatchAppViewModel.insert(rv2);
+//        mCatchAppViewModel.insert(rv3);
+
+
+
 
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
@@ -38,35 +56,10 @@ public class ListActivity extends AppCompatActivity implements RunListAdapter.On
             adapter.submitList(words);
         });
 
-//        TextView tv2 = (TextView) findViewById(R.id.tv2);
-//
-//
-//        mCatchAppViewModel.getAllRunVals(1).observe(this, words -> {
-//            // Update the cached copy of the words in the adapter.
-//            tv2.setText(Double.toString(words.get(0).updateTime));
-//        });
-
-
-
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(view -> {
-//            Intent intent = new Intent(MainActivity.this, NewWordActivity.class);
-//            startActivityForResult(intent, NEW_WORD_ACTIVITY_REQUEST_CODE);
-//        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-//        if (requestCode == NEW_WORD_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-//            Runs run = new Runs(data.getStringExtra(NewWordActivity.EXTRA_REPLY));
-//            mCatchAppViewModel.insert(word);
-//        } else {
-//            Toast.makeText(
-//                    getApplicationContext(),
-//                    R.string.empty_not_saved,
-//                    Toast.LENGTH_LONG).show();
-//        }
     }
 
     @Override

@@ -38,6 +38,14 @@ class CatchAppRepository {
         return mAllRunVals;
     }
 
+    LiveData<Integer> getID(){
+        return mRunsDao.getID();
+    }
+
+    void updateLenAndTime(double totLen, double totTime){
+        mRunsDao.updateLenAndTime(totLen, totTime);
+    }
+
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(User user) {
@@ -58,4 +66,15 @@ class CatchAppRepository {
         });
     }
 
+    public void deleteAllRuns() {
+        CatchAppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRunsDao.deleteAllRuns();
+        });
+    }
+
+    public void deleteAllRunVals() {
+        CatchAppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRunsDao.deleteAllRunVals();
+        });
+    }
 }

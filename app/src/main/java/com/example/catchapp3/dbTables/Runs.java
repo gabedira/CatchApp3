@@ -35,7 +35,7 @@ public class Runs {
     @ColumnInfo(name = "total_time")
     public double totalTime;
 
-    public Runs(@NonNull int runId, String runName, String created, int userId, double totalLength, double totalTime) {
+    public Runs(String runName, String created, int userId, double totalLength, double totalTime) {
         this.runId = runId;
         this.runName = runName;
         this.created = created;
