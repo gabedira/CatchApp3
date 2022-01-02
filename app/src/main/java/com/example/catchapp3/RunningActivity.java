@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.catchapp3.dbTables.RunVals;
@@ -31,6 +32,7 @@ import java.util.TimerTask;
 public class RunningActivity extends AppCompatActivity {
     private CatchAppViewModel mCatchAppViewModel;
     private int newID;
+    private int ghostID = 0;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -39,18 +41,17 @@ public class RunningActivity extends AppCompatActivity {
         //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_running);
         Format f = new SimpleDateFormat("M/d/yyyy");
-        today = f.format(new Date());
 
         mCatchAppViewModel = new ViewModelProvider(this).get(CatchAppViewModel.class);
-        mCatchAppViewModel.insert(new Runs("tempName", today,1, 0, 0));
+        mCatchAppViewModel.insert(new Runs("tempName", f.format(new Date()),1, 0, 0));
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
 
         Bundle extras = getIntent().getExtras();
-        int id = 0;
+
         if (extras != null) {
-            id = extras.getInt("id");
+            ghostID = extras.getInt("id");
             //The key argument here must match that used in the other activity
         }
 
@@ -59,11 +60,7 @@ public class RunningActivity extends AppCompatActivity {
             newID = retid;
         });
 
-//        TextView textView = (TextView) findViewById(R.id.);
-//        textView.setText(Integer.toString(id)); //set text for text view
-//        TextView textView2 = (TextView) findViewById(R.id.textView3);
-
-        mCatchAppViewModel.getAllRunVals(id).observe(this, rvList -> {
+        mCatchAppViewModel.getAllRunVals(ghostID).observe(this, rvList -> {
             // Update the cached copy of the words in the adapter.
             playGame(rvList);
         });
@@ -84,7 +81,6 @@ public class RunningActivity extends AppCompatActivity {
     private boolean running = false;
     private RunVals currentRV;
     private double prevPlayerSpeed = -1;
-    String today;
 
     private boolean playerSpeedUpPressed = false, playerSpeedDownPressed = false,
             ghostSpeedUpPressed = false, ghostSpeedDownPressed = false;
@@ -94,14 +90,16 @@ public class RunningActivity extends AppCompatActivity {
     private TextView playerDistanceTV, ghostDistanceTV, playerLapsTV, ghostLapsTV, playerSpeedTV,
             ghostSpeedTV, time;
 
+    private ImageView playerRunner;
+    private ImageView ghostRunner;
+
 
     private void TimerMethod(){
         this.runOnUiThread(TimerTick);
     }
 
     private Runnable TimerTick = new Runnable() {
-        @Override
-        public void run() {
+        public void updateValues(){
             seconds += PERIOD / 1000;
             playerDistance += playerSpeed * PERIOD / 1000 / 3600;
             ghostDistance += ghostSpeed * PERIOD / 1000 / 3600;
@@ -122,11 +120,13 @@ public class RunningActivity extends AppCompatActivity {
                     ghostSpeed = 0;
             }
 
-            if(Math.abs(playerSpeed - prevPlayerSpeed) >= 0.1 ){
+            if(Math.abs(playerSpeed - prevPlayerSpeed) >= 0.05 ){
                 rvPlayer.add(new RunVals(newID, seconds, playerSpeed));
                 prevPlayerSpeed = playerSpeed;
             }
+        }
 
+        public void setDisplay(){
             time.setText(String.format("%02d:%02d", (int) seconds/60, (int) seconds%60));
             playerDistanceTV.setText(String.format("%.02f", playerDistance));
             ghostDistanceTV.setText(String.format("%.02f", ghostDistance));
@@ -134,12 +134,24 @@ public class RunningActivity extends AppCompatActivity {
             ghostSpeedTV.setText(String.format("%.1f", ghostSpeed));
             playerLapsTV.setText(Integer.toString(playerLaps));
             ghostLapsTV.setText(Integer.toString(ghostLaps));
+            RunnerPositioner.position(playerRunner, (playerDistance % 0.25) / 0.25);
+            RunnerPositioner.position(ghostRunner, (ghostDistance % 0.25) / 0.25);
+        }
+
+        @Override
+        public void run() {
+            updateValues();
+            setDisplay();
         }
     };
 
     @SuppressLint("ClickableViewAccessibility")
     private void init(){
         time = (TextView) findViewById(R.id.timer);
+        if(ghostID == 0) {
+            findViewById(R.id.ghostDisp).setVisibility(View.INVISIBLE);
+            findViewById(R.id.runnerGhost).setVisibility(View.INVISIBLE);
+        }
         playerDistanceTV = (TextView) findViewById(R.id.userDisp).findViewById(R.id.DistanceValue);
         ghostDistanceTV = (TextView) findViewById(R.id.ghostDisp).findViewById(R.id.DistanceValue);
         playerLapsTV = (TextView) findViewById(R.id.userDisp).findViewById(R.id.LapsValue);
@@ -152,6 +164,9 @@ public class RunningActivity extends AppCompatActivity {
         playerSpeedDown = findViewById(R.id.userDisp).findViewById(R.id.imageButtonDown);
         ghostSpeedUp = findViewById(R.id.ghostDisp).findViewById(R.id.imageButtonUp);
         ghostSpeedDown = findViewById(R.id.ghostDisp).findViewById(R.id.imageButtonDown);
+        playerRunner = findViewById(R.id.runnerPlayer);
+        ghostRunner = findViewById(R.id.runnerGhost);
+        ghostRunner.setColorFilter(Color.RED);
         currentRV = rvIterator.next();
 
         runningToggle.setOnClickListener(new View.OnClickListener() {
@@ -184,12 +199,9 @@ public class RunningActivity extends AppCompatActivity {
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for(RunVals rv : rvPlayer) {
-                    mCatchAppViewModel.insert(rv);
-                }
-                Thread th = new Thread(){
-                    public void run(){mCatchAppViewModel.updateLenAndTime(playerDistance, seconds);}
-                };
+                for(RunVals rv : rvPlayer) { mCatchAppViewModel.insert(rv); }
+                mCatchAppViewModel.insert(new RunVals(newID, seconds, 0));
+                Thread th = new Thread(){ public void run(){mCatchAppViewModel.updateLenAndTime(playerDistance, seconds);}};
                 th.start();
                 switchActivities();
             }
@@ -267,8 +279,6 @@ public class RunningActivity extends AppCompatActivity {
 
     private void switchActivities(){
         Intent switchActivityIntent = new Intent(this, StatActivity.class);
-//        switchActivityIntent.putExtra("total_distance", playerDistance);
-//        switchActivityIntent.putExtra("total_time", seconds);
         startActivity(switchActivityIntent);
     }
 }

@@ -14,7 +14,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        app:srcCompat="@drawable/runningfieldlong" />
+        app:srcCompat="@drawable/runningfieldlong"/>
+
+    <ImageView
+        android:id="@+id/runnerPlayer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:translationX="220dp"
+        android:translationY="130dp"
+        android:scaleX="1"
+        app:srcCompat="@drawable/running_silhouette_transparent_images" />
+    <ImageView
+        android:id="@+id/runnerGhost"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:translationX="220dp"
+        android:translationY="130dp"
+        android:scaleX="1"
+        app:srcCompat="@drawable/running_silhouette_transparent_images" />
 
     <LinearLayout
         android:id="@+id/linlayout"
@@ -73,6 +92,8 @@
         android:layout_centerHorizontal="true"
         android:text="FINISH"
         android:visibility="invisible" />
+
+
 
 
 </RelativeLayout>
