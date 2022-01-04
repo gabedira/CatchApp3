@@ -6,4 +6,197 @@
     android:layout_height="match_parent"
     tools:context=".StatActivity">
 
+    <TextView
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Run Statistics"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal"
+        android:textSize="50dp"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/Title"
+        android:paddingTop="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Distance"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/DistanceValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_gravity="end"
+                android:gravity="end"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Time"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/TimeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_gravity="end"
+                android:gravity="end"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Average Speed"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/SpeedValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_gravity="end"
+                android:gravity="end"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Laps"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/LapsValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_gravity="end"
+                android:gravity="end"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Max Speed"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+            <TextView
+                android:id="@+id/MaxSpeedValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00"
+                android:layout_gravity="end"
+                android:gravity="end"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:background="#FF00FF00"
+                android:layout_margin="10dp" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DELETE"
+                android:background="#FFFF0000"
+                android:layout_margin="10dp"
+
+                />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/input"
+                android:hint="Enter run name here"
+                android:visibility="gone"/>
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

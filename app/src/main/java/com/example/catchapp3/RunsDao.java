@@ -46,4 +46,16 @@ public interface RunsDao {
 
     @Query("UPDATE runs SET total_length = :totLen, total_time = :totTime WHERE run_id = (SELECT run_id FROM runs ORDER BY run_id DESC)")
     void updateLenAndTime(double totLen, double totTime);
+
+    @Query("DELETE FROM runs WHERE run_id = (SELECT run_id FROM runs ORDER BY run_id DESC)")
+    void deleteLatestRun();
+
+    @Query("DELETE FROM run_vals WHERE run_id = (SELECT run_id FROM runs ORDER BY run_id DESC)")
+    void deleteLatestRunVals();
+
+    @Query("SELECT * FROM runs ORDER BY run_id DESC LIMIT 1")
+    LiveData<Runs> getLatestRun();
+
+    @Query("SELECT update_speed FROM run_vals ORDER BY run_id DESC, update_speed DESC LIMIT 1")
+    LiveData<Double> getLatestMaxSpeed();
 }

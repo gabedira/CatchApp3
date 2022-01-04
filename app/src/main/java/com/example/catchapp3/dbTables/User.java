@@ -19,8 +19,7 @@ public class User {
     @ColumnInfo(name = "user_name")
     public String userName;
 
-    public User(@NonNull int userId, String userName) {
-        this.userId = userId;
+    public User(@NonNull String userName) {
         this.userName = userName;
     }
 }

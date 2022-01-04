@@ -3,6 +3,7 @@ package com.example.catchapp3;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Query;
 
 import com.example.catchapp3.dbTables.RunVals;
 import com.example.catchapp3.dbTables.Runs;
@@ -77,4 +78,20 @@ class CatchAppRepository {
             mRunsDao.deleteAllRunVals();
         });
     }
+
+    public LiveData<Runs> getLatestRun(){
+        return mRunsDao.getLatestRun();
+    }
+
+    public LiveData<Double> getLatestMaxSpeed(){
+        return mRunsDao.getLatestMaxSpeed();
+    }
+
+    public void deleteLatestRunsAndRunVals(){
+        CatchAppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRunsDao.deleteLatestRun();
+            mRunsDao.deleteLatestRunVals();
+        });
+    }
+
 }

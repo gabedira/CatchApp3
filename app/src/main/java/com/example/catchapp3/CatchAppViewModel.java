@@ -36,4 +36,7 @@ public class CatchAppViewModel extends AndroidViewModel {
     public void deleteAllRunVals(){mRepository.deleteAllRunVals(); }
     public LiveData<Integer> getID(){return mRepository.getID();}
     public void updateLenAndTime(double totLen, double totTime){mRepository.updateLenAndTime(totLen, totTime);}
+    public LiveData<Runs> getLatestRun(){ return mRepository.getLatestRun();}
+    public LiveData<Double> getLatestMaxSpeed(){ return mRepository.getLatestMaxSpeed();}
+    public void deleteLatestRunsAndRunVals() {mRepository.deleteLatestRunsAndRunVals(); }
 }
