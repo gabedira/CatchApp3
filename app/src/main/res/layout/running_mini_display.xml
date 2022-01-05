@@ -4,15 +4,18 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="@android:color/holo_red_light">
+
+    android:background="@drawable/bg_rounded2">
 
     <TextView
         android:id="@+id/UserLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="username"
+        android:text="You"
+        android:textColor="@color/white"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:paddingVertical="5dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,8 +26,10 @@
             android:id="@+id/DistanceLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
             android:text="Distance:"
             android:gravity="start"
+            android:paddingHorizontal="5dp"
             android:layout_weight="1"/>
 
         <TextView
@@ -34,6 +39,8 @@
             android:layout_gravity="end"
             android:gravity="end"
             android:text="0.00"
+            android:textColor="@color/white"
+            android:paddingHorizontal="5dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_weight="1"/>
 
@@ -49,7 +56,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Laps:"
+            android:textColor="@color/white"
             android:gravity="start"
+            android:paddingHorizontal="5dp"
             android:layout_weight="1"/>
 
         <TextView
@@ -59,6 +68,8 @@
             android:layout_gravity="end"
             android:gravity="end"
             android:text="0"
+            android:textColor="@color/white"
+            android:paddingHorizontal="5dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_weight="1"/>
 
@@ -76,7 +87,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Speed:"
+            android:textColor="@color/white"
             android:gravity="start"
+            android:paddingHorizontal="5dp"
             android:layout_weight="1"/>
 
         <TextView
@@ -86,6 +99,8 @@
             android:layout_gravity="end"
             android:gravity="end"
             android:text="0.0"
+            android:textColor="@color/white"
+            android:paddingHorizontal="5dp"
             app:layout_constraintRight_toRightOf="parent"
             android:layout_weight="1"/>
     </LinearLayout>

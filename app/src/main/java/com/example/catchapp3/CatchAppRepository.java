@@ -47,6 +47,10 @@ class CatchAppRepository {
         mRunsDao.updateLenAndTime(totLen, totTime);
     }
 
+    void updateName(String name){
+        mRunsDao.updateName(name);
+    }
+
     // You must call this on a non-UI thread or your app will throw an exception. Room ensures
     // that you're not doing any long running operations on the main thread, blocking the UI.
     void insert(User user) {
@@ -89,9 +93,15 @@ class CatchAppRepository {
 
     public void deleteLatestRunsAndRunVals(){
         CatchAppRoomDatabase.databaseWriteExecutor.execute(() -> {
-            mRunsDao.deleteLatestRun();
             mRunsDao.deleteLatestRunVals();
+            mRunsDao.deleteLatestRun();
         });
     }
 
+    public void deleteInvalidRuns() {
+        CatchAppRoomDatabase.databaseWriteExecutor.execute(() -> {
+            mRunsDao.deleteInvalidRunVals();
+            mRunsDao.deleteInvalidRuns();
+        });
+    }
 }

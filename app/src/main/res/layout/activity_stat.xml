@@ -169,7 +169,8 @@
                 android:layout_height="wrap_content"
                 android:text="SAVE"
                 android:background="#FF00FF00"
-                android:layout_margin="10dp" />
+                android:layout_margin="10dp"
+                />
 
             <Button
                 android:id="@+id/delete"
@@ -178,14 +179,33 @@
                 android:text="DELETE"
                 android:background="#FFFF0000"
                 android:layout_margin="10dp"
-
                 />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <EditText
                 android:id="@+id/input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:hint="Enter run name here"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="100dp"
+                android:paddingRight="100dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ENTER"
+                android:layout_margin="10dp"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="HOME"
+                android:layout_margin="10dp"
                 android:visibility="gone"/>
 
 

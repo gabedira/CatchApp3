@@ -36,12 +36,20 @@ public class Runs {
     public double totalTime;
 
     public Runs(String runName, String created, int userId, double totalLength, double totalTime) {
+        this.runName = runName;
+        this.created = created;
+        this.userId = userId;
+        this.totalLength = totalLength;
+        this.totalTime = totalTime;
+    }
+
+    public Runs(int runId, String runName, String created, int userId, double totalLength, double totalTime) {
         this.runId = runId;
         this.runName = runName;
         this.created = created;
         this.userId = userId;
         this.totalLength = totalLength;
-        this.totalLength = totalTime;
+        this.totalTime = totalTime;
     }
 }
 

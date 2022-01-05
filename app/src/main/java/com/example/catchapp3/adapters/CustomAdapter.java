@@ -19,13 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private final TextView runItemView;
+    private final TextView nameTV, distTV, dateTV;
     static RunListAdapter.OnNoteListener onNoteListener;
     private Runs run;
 
     public RunViewHolder(View itemView, RunListAdapter.OnNoteListener onNoteListener) {
         super(itemView);
-        runItemView = itemView.findViewById(R.id.textView);
+        nameTV = itemView.findViewById(R.id.textView);
+        distTV = itemView.findViewById(R.id.distView);
+        dateTV = itemView.findViewById(R.id.dateView);
         this.onNoteListener = onNoteListener;
 
         itemView.setOnClickListener(this);
@@ -33,7 +35,15 @@ class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListe
 
     public void bind(Runs run) {
         this.run = run;
-        runItemView.setText(run.runName);
+        nameTV.setText(run.runName);
+        if(run.runId == 0){
+            distTV.setVisibility(View.GONE);
+            dateTV.setVisibility(View.INVISIBLE);
+        }
+        else {
+            distTV.setText(String.format("%.02f", run.totalLength));
+            dateTV.setText(run.created);
+        }
     }
 
     public RunViewHolder create(ViewGroup parent) {
@@ -47,106 +57,3 @@ class RunViewHolder extends RecyclerView.ViewHolder implements View.OnClickListe
         onNoteListener.onNoteClick(run.runId);
     }
 }
-
-
-//public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder>{
-//    private Context context;
-//    private ArrayList<String> items;
-//
-//    private Runs[] localDataSet;
-//
-//    static OnNoteListener mOnNoteListener;
-//
-//
-//    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-//        private final TextView textView;
-//        OnNoteListener onNoteListener;
-//
-//        public ViewHolder(View view, OnNoteListener onNoteListener){
-//            super(view);
-//            textView = (TextView) view.findViewById(R.id.tv_item_name);
-//            this.onNoteListener = onNoteListener;
-//            itemView.setOnClickListener(this);
-//
-//        }
-//
-//        static ViewHolder create(ViewGroup parent){
-//            View view = LayoutInflater.from(parent.getContext())
-//                    .inflate(R.layout.item_custom_row, parent, false);
-//            return new ViewHolder(view, mOnNoteListener);
-//        }
-//
-//        public TextView getTextView(){
-//            return textView;
-//        }
-//
-//        @Override
-//        public void onClick(View v) {
-//            onNoteListener.onNoteClick(getAdapterPosition());
-//        }
-//    }
-//
-//    public interface OnNoteListener{
-//        void onNoteClick(int position);
-//    }
-//
-//    public CustomAdapter(List<Runs> dataSet, OnNoteListener onNoteListener){
-//        if(dataSet != null) {
-//            localDataSet = new Runs[dataSet.size()];
-//            dataSet.toArray(localDataSet);
-//        }
-//
-//        this.mOnNoteListener = onNoteListener;
-//    }
-//
-//    @Override
-//    public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType){
-//        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_custom_row, viewGroup, false);
-//        return new ViewHolder(view, mOnNoteListener);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(ViewHolder viewHolder, final int position){
-//        viewHolder.getTextView().setText(localDataSet[position].runName);
-//    }
-//
-//    @Override
-//    public int getItemCount(){
-//        return localDataSet.length;
-//    }
-//}
-//
-///*
-//public class RunsListAdapter extends ListAdapter<Runs, CustomAdapter.ViewHolder> {
-//    public RunsListAdapter(@NonNull DiffUtil.ItemCallback<Runs> diffCallback) {
-//        super(diffCallback);
-//    }
-//
-//    @Override
-//    public CustomAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//        return CustomAdapter.ViewHolder.create(parent);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull CustomAdapter.ViewHolder holder, int position) {
-//
-//    }
-//
-////    @Override
-////    public void onBindViewHolder(CustomAdapter.ViewHolder holder, int position) {
-////        Runs current = getItem(position);
-////        holder.bind(current.getWord());
-////    }
-//
-////    static class WordDiff extends DiffUtil.ItemCallback<Word> {
-////
-////        @Override
-////        public boolean areItemsTheSame(@NonNull Word oldItem, @NonNull Word newItem) {
-////            return oldItem == newItem;
-////        }
-////
-////        @Override
-////        public boolean areContentsTheSame(@NonNull Word oldItem, @NonNull Word newItem) {
-////            return oldItem.getWord().equals(newItem.getWord());
-////        }
-//*/

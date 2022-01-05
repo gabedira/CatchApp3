@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/gabdi/AndroidStudioProjects/CatchApp3/app/src/main/res/drawable/bg_rounded.xml" value="0.18045112781954886" />
+        <entry key="..\:/Users/gabdi/AndroidStudioProjects/CatchApp3/app/src/main/res/drawable/bg_rounded2.xml" value="0.18289473684210528" />
         <entry key="..\:/Users/gabdi/AndroidStudioProjects/CatchApp3/app/src/main/res/layout/activity_list.xml" value="0.1" />
         <entry key="..\:/Users/gabdi/AndroidStudioProjects/CatchApp3/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/gabdi/AndroidStudioProjects/CatchApp3/app/src/main/res/layout/activity_running.xml" value="0.18365218000502148" />

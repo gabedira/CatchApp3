@@ -43,7 +43,7 @@ public class RunningActivity extends AppCompatActivity {
         Format f = new SimpleDateFormat("M/d/yyyy");
 
         mCatchAppViewModel = new ViewModelProvider(this).get(CatchAppViewModel.class);
-        mCatchAppViewModel.insert(new Runs("tempName", f.format(new Date()),1, 0, 0));
+        mCatchAppViewModel.insert(new Runs("_temp", f.format(new Date()),1, 0, 0));
         // Add an observer on the LiveData returned by getAlphabetizedWords.
         // The onChanged() method fires when the observed data changes and the activity is
         // in the foreground.
@@ -88,7 +88,7 @@ public class RunningActivity extends AppCompatActivity {
     private Button runningToggle, finishButton;
     private ImageButton playerSpeedUp, playerSpeedDown, ghostSpeedUp, ghostSpeedDown;
     private TextView playerDistanceTV, ghostDistanceTV, playerLapsTV, ghostLapsTV, playerSpeedTV,
-            ghostSpeedTV, time;
+            ghostSpeedTV, time, ghostName;
 
     private ImageView playerRunner;
     private ImageView ghostRunner;
@@ -152,6 +152,8 @@ public class RunningActivity extends AppCompatActivity {
             findViewById(R.id.ghostDisp).setVisibility(View.INVISIBLE);
             findViewById(R.id.runnerGhost).setVisibility(View.INVISIBLE);
         }
+        ghostName = (TextView) findViewById(R.id.ghostDisp).findViewById(R.id.UserLabel);
+        ghostName.setText("Ghost");
         playerDistanceTV = (TextView) findViewById(R.id.userDisp).findViewById(R.id.DistanceValue);
         ghostDistanceTV = (TextView) findViewById(R.id.ghostDisp).findViewById(R.id.DistanceValue);
         playerLapsTV = (TextView) findViewById(R.id.userDisp).findViewById(R.id.LapsValue);

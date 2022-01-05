@@ -4,12 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TitleActivity">
+    tools:context=".TitleActivity"
+    android:background="@color/white">
 
     <Button
         android:id="@+id/buttonList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ghost List"
-        android:layout_centerInParent="true" />
+        android:text="Start Running"
+        android:layout_centerInParent="true"
+        android:translationY="250dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/titlescreen" />
 </RelativeLayout>

@@ -31,19 +31,7 @@ public class ListActivity extends AppCompatActivity implements RunListAdapter.On
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         mCatchAppViewModel = new ViewModelProvider(this).get(CatchAppViewModel.class);
-//        mCatchAppViewModel.deleteAllRunVals();
-//        mCatchAppViewModel.deleteAllRuns();
-
-        //Runs run2 = new Runs("testRun3", "12/29/2021", 1, 6.8, 3000);
-//
-//        RunVals rv1 = new RunVals(1, 1, 5.4);
-//        RunVals rv2 = new RunVals(1, 10, 10);
-//        RunVals rv3 = new RunVals(1, 20, 1);
-//
-       // mCatchAppViewModel.insert(run2);
-//        mCatchAppViewModel.insert(rv1);
-//        mCatchAppViewModel.insert(rv2);
-//        mCatchAppViewModel.insert(rv3);
+        mCatchAppViewModel.deleteInvalidRuns();
 
 
 
@@ -64,7 +52,7 @@ public class ListActivity extends AppCompatActivity implements RunListAdapter.On
 
     @Override
     public void onNoteClick(int id) {
-        Intent intent = new Intent(this, RunningActivity.class); // TODO: update this to new activity
+        Intent intent = new Intent(this, RunningActivity.class);
         intent.putExtra("id", id);
 
         startActivity(intent);
