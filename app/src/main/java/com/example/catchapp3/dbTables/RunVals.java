@@ -7,9 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "run_vals",
-        primaryKeys = {"run_id", "update_time"},
-        foreignKeys = {@ForeignKey(entity=Runs.class,
-        parentColumns = "run_id", childColumns = "run_id", onDelete = ForeignKey.CASCADE)})
+        primaryKeys = {"run_id", "update_time"})
 public class RunVals {
 
     @NonNull

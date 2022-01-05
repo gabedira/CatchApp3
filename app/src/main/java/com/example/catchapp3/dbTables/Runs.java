@@ -7,8 +7,7 @@ import androidx.room.ForeignKey;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "runs", foreignKeys = {@ForeignKey(entity=User.class, parentColumns = "user_id",
-        childColumns = "user_id", onDelete = ForeignKey.CASCADE)})
+@Entity(tableName = "runs")
 public class Runs {
 
     @PrimaryKey(autoGenerate = true)

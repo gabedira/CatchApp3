@@ -11,14 +11,14 @@ public class RunnerPositioner {
         double offsetX, offsetY;
         if(0 <= percentage && percentage <= 0.2607){
             double theta = Math.PI * percentage / 0.2607 - Math.PI/2;
-            offsetX = 220 + 160 * Math.cos(theta);
+            offsetX = 220 + 145 * Math.cos(theta);
             offsetY = -15 - 145 * Math.sin(theta);
         }else if (0.2607 <= percentage && percentage <= 0.5){
             offsetX = (percentage - 0.2607)/(0.5 - 0.2607) * -470 + 220;
             offsetY = -160;
         }else if (0.5 <= percentage && percentage <= 0.5 + 0.2607){
             double theta = Math.PI * (percentage - 0.5)/ 0.2607 + Math.PI/2;
-            offsetX = -250 + 130 * Math.cos(theta);
+            offsetX = -250 + 115 * Math.cos(theta);
             offsetY = -15 - 145 * Math.sin(theta);
         }else{
             offsetX = (1 - percentage)/(0.5 - 0.2607) * -470 + 220;

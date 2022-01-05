@@ -68,5 +68,9 @@ public interface RunsDao {
     @Query("SELECT update_speed FROM run_vals ORDER BY run_id DESC, update_speed DESC LIMIT 1")
     LiveData<Double> getLatestMaxSpeed();
 
+    @Query("UPDATE runs SET run_id = 0 WHERE run_id = 1")
+    void initializeNoGhost();
 
+    @Query("UPDATE users SET user_id = user_id -1")
+    void initializeUsers();
 }
