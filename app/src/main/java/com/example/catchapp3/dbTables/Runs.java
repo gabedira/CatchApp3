@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "runs", foreignKeys = {@ForeignKey(entity=User.class, parentColumns = "user_id",
@@ -43,6 +44,7 @@ public class Runs {
         this.totalTime = totalTime;
     }
 
+    @Ignore
     public Runs(int runId, String runName, String created, int userId, double totalLength, double totalTime) {
         this.runId = runId;
         this.runName = runName;
